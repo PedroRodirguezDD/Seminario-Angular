@@ -8,15 +8,34 @@ import {Song} from './Song';
 })
 export class SongsListComponent implements OnInit{
 
-  cancion: Song = {
-    nombre:'Help',
-    banda:'The Beatles',
-    genero:'Rock',
-    anio:1965  
-  }
+  canciones: Song[] = [
+    {
+      nombre:'Help',
+      banda:'The Beatles',
+      genero:'Rock',
+      anio:1965,
+      calificacion:0
+    },
+    {
+      nombre:'Sugar',
+      banda:'Maroon 5',
+      genero:'Pop',
+      anio:2012,
+      calificacion:0
+    },
+    {
+      nombre:'Elenor Rigby',
+      banda:'The Beatles',
+      genero:'Rock',
+      anio:1966,
+      calificacion:0
+    }  
+  ]
 
   constructor(){ }
 
   ngOnInit(): void {
   }
+
+ 
 }
