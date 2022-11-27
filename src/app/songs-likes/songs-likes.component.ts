@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CancionesLikesService } from '../canciones-likes.service';
 
 @Component({
   selector: 'app-songs-likes',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./songs-likes.component.css']
 })
 export class SongsLikesComponent {
+  
+  constructor(private cancionGusta:CancionesLikesService){
+  }
 
 }

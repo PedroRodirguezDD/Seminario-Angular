@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CancionesLikesService } from '../canciones-likes.service';
 import {Song} from './Song';
 
 @Component({
@@ -32,10 +33,14 @@ export class SongsListComponent implements OnInit{
     }  
   ]
 
-  constructor(){ }
+  constructor(private cancionGusta:CancionesLikesService){
+  }
 
   ngOnInit(): void {
   }
 
+  addCancion(cancion : Song): void{
+    this.cancionGusta.addCancion(cancion);
+  }
  
 }

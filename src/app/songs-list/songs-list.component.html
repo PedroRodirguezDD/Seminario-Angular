@@ -6,6 +6,7 @@
             <th>Genero</th>
             <th>Año de lanzamiento</th>
             <th>Calificacion</th>
+            <th>Agregar</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +17,9 @@
             <td>{{cancion.anio}}</td>
             <td>
                 <app-calificacion [(calificacion)]="cancion.calificacion" ></app-calificacion>
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="addCancion(cancion)">Agregar a lista</button>
             </td>
         </tr>
     </tbody>
