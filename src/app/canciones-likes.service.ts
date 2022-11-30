@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Song } from './songs-list/Song';
 
 @Injectable({
@@ -6,20 +7,21 @@ import { Song } from './songs-list/Song';
 })
 export class CancionesLikesService {
 
-  cancionesListaLike: Song [] = [];
+  private _cancionesListaLike:Song []= [];
+  cancionesListaLike:BehaviorSubject<Song []> = new BehaviorSubject(this._cancionesListaLike);
 
   constructor() { }
 
   addCancion(cancion: Song) {
-    let item: Song= this.cancionesListaLike.find( (v1) => v1.nombre == cancion.nombre)!;
+    let item: Song= this._cancionesListaLike.find( (v1) => v1.nombre == cancion.nombre)!;
     if(!item){
-      this.cancionesListaLike.push(cancion);
-      console.log(this.cancionesListaLike);
+      this._cancionesListaLike.push(cancion);
+      console.log(this._cancionesListaLike);
     }
     else{
       alert("Esta cancion ya esta en tu lista");
     }
-    
+    this.cancionesListaLike.next(this._cancionesListaLike);
   }
 
 }

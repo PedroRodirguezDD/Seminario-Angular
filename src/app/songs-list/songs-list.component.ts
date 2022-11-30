@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CancionDataService } from '../cancion-data.service';
 import { CancionesLikesService } from '../canciones-likes.service';
 import {Song} from './Song';
 
@@ -9,34 +10,13 @@ import {Song} from './Song';
 })
 export class SongsListComponent implements OnInit{
 
-  canciones: Song[] = [
-    {
-      nombre:'Help',
-      banda:'The Beatles',
-      genero:'Rock',
-      anio:1965,
-      calificacion:0
-    },
-    {
-      nombre:'Sugar',
-      banda:'Maroon 5',
-      genero:'Pop',
-      anio:2012,
-      calificacion:0
-    },
-    {
-      nombre:'Elenor Rigby',
-      banda:'The Beatles',
-      genero:'Rock',
-      anio:1966,
-      calificacion:0
-    }  
-  ]
+  canciones: Song[] = [];
 
-  constructor(private cancionGusta:CancionesLikesService){
+  constructor(private cancionGusta:CancionesLikesService, private cancionData:CancionDataService){
   }
 
   ngOnInit(): void {
+      this.cancionData.getAll().subscribe(songs => this.canciones=songs);
   }
 
   addCancion(cancion : Song): void{

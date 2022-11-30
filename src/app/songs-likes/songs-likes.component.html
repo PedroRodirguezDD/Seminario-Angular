@@ -1,1 +1,8 @@
-<div class="col-6">Canciones que te gustan</div>
+<div class="col-6">
+    <h4>Canciones que te gustan</h4>
+</div>
+<ul>
+    <li *ngFor="let item of lista$ | async">
+        {{item.nombre}} - {{item.banda}}
+    </li>
+</ul>
